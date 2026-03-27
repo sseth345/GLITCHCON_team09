@@ -1,326 +1,262 @@
 <div align="center">
 
-# 🏥 ClinSight AI
+# ClinSight AI
 
-### *Clinical Intelligence at the Speed of Thought*
+### Clinical Intelligence, Accelerated
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![FAISS](https://img.shields.io/badge/FAISS-Vector_DB-0064b0?style=for-the-badge&logo=meta&logoColor=white)](https://faiss.ai/)
-[![SentenceTransformers](https://img.shields.io/badge/Sentence_Transformers-Embeddings-orange?style=for-the-badge&logo=huggingface&logoColor=white)](https://sbert.net/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![Groq](https://img.shields.io/badge/Powered%20by-Groq%20LLaMA%203.3%2070B-orange?style=flat-square)](https://console.groq.com)
+[![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue?style=flat-square)](https://vitejs.dev)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green?style=flat-square)](https://nodejs.org)
+[![Firebase](https://img.shields.io/badge/Auth-Firebase-yellow?style=flat-square)](https://firebase.google.com)
+[![License](https://img.shields.io/badge/License-MIT-purple?style=flat-square)](LICENSE)
 
-<br/>
+**Track Winners — Healthcare AI · GLITCHCON 2.0**
 
-> **ClinSight AI** is an AI-powered clinical intelligence platform that empowers doctors to instantly analyze patient case sheets and retrieve meaningful insights from medical records — using natural language. Powered by a **Retrieval-Augmented Generation (RAG)** pipeline with semantic search, ClinSight transforms unstructured patient data into structured, actionable clinical dashboards.
+*Team offered internship by Kathir Memorial Hospital*
 
-<br/>
+[Live Demo](https://clinsightai.vercel.app) · [Report Bug](https://github.com/shreyashgautam/ClinSight-AI/issues)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
+## The Problem
 
-- [🚨 Problem Statement](#-problem-statement)
-- [💡 Solution Overview](#-solution-overview)
-- [🏗️ System Architecture](#️-system-architecture)
-- [🔄 RAG Pipeline Flow](#-how-the-rag-pipeline-works)
-- [✨ Key Features](#-key-features)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [⚡ Installation & Setup](#-installation--setup)
-- [▶️ How to Run](#️-how-to-run)
-- [💬 Example Queries](#-example-queries)
-- [🚀 Future Improvements](#-future-improvements)
-- [📄 License](#-license)
+Physicians in busy hospitals manage hundreds of patients — each with dense, unstructured histories buried across visit logs, prescriptions, lab reports, and diagnostic notes. Before every consultation, the doctor has no structured summary. They walk in cold.
 
----
+This leads to:
+- Missed clinical patterns (worsening HbA1c over 7 visits goes unnoticed)
+- Repeated lab orders for tests already done recently
+- Drug interaction risks overlooked under time pressure
+- Diagnostic errors from cognitive overload
+- No audit trail — actions on patient records go unlogged
 
-## 🚨 Problem Statement
-
-In busy clinical environments, doctors routinely manage hundreds of patients — each with dense, unstructured medical histories buried in case sheets, visit logs, and diagnostic reports. Finding the right patient record or spotting a disease pattern across patients is:
-
-- ⏱️ **Time-consuming** — manually scrolling through records wastes critical minutes
-- 🔍 **Keyword-limited** — traditional search misses semantic context (e.g., searching "fatigue" won't surface "chronic tiredness")
-- 🧩 **Fragmented** — patient data is scattered across diagnoses, prescriptions, and visit notes
-- ⚠️ **Error-prone** — cognitive overload leads to missed patterns and oversights
-
-> **There is no intelligent layer between the doctor and the data.**
+**There is no intelligent layer between the doctor and the data.**
 
 ---
 
-## 💡 Solution Overview
+## The Solution
 
-**ClinSight AI** bridges this gap by introducing an AI-powered semantic search and retrieval layer over patient medical records. Doctors can query the system in plain English — by patient name or disease — and receive a fully structured clinical dashboard in seconds.
+ClinSight is a multi-agent clinical intelligence platform that deploys seven specialised AI agents to surface insights, detect risks, and assist both doctors and patients — all in real time.
 
-The platform leverages **Retrieval-Augmented Generation (RAG)**: patient records are embedded as semantic vectors, stored in a FAISS index, and retrieved using similarity search. When a disease is searched, the system surfaces all matching patients, lets the doctor select one, and renders a rich insight summary — no manual record hunting required.
+When a doctor opens a patient record, the system automatically generates a 60-second brief, flags critical patterns, checks drug interactions, routes to the right specialist, and logs every action to an immutable blockchain — before the doctor types a single query.
+
+Patients get their own portal: upload a prescription or lab report, get a structured health summary, personalised nutrition advice, overdue test reminders, and access to the hospital's AI receptionist — all from a browser or WhatsApp.
 
 ---
 
-## 🏗️ System Architecture
+## Achievements
 
-```mermaid
-flowchart TD
-    A([👨‍⚕️ Doctor]) -->|Search by Name or Disease| B[🖥️ Streamlit UI]
+- **Track Winners — Healthcare AI** at GLITCHCON 2.0, VIT Chennai (24-hour hackathon)
+- **Team offered internship** by Kathir Memorial Hospital, Chennai
+- Industry partners: Kathir Memorial Hospital · ECRS · Mull AI
 
-    subgraph Ingestion Pipeline
-        C[📂 JSON Medical Dataset]
-        C -->|Patient Records| D[🔤 Text Serializer]
-        D -->|Structured Text| E[🤖 Sentence Transformers]
-        E -->|Dense Vectors| F[(🗄️ FAISS Vector Store)]
-    end
+---
 
-    subgraph Query Pipeline
-        B -->|Search Query| G[🔤 Embed Query]
-        G -->|Query Vector| F
-        F -->|Top-k Matching Records| H[📋 Record Retriever]
-        H -->|Matched Patient Data| I{🔀 Search Type?}
-        I -->|Name Search| J[📊 Direct Dashboard]
-        I -->|Disease Search| K[👥 Patient List UI]
-        K -->|Doctor Selects Patient| J
-        J -->|Profile + Diagnosis + Meds + Visits| L[🧠 AI Clinical Insight Summary]
-        L -->|Final Output| B
-    end
+## System Architecture
 
-    B -->|Structured Dashboard| A
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        ClinSight Platform                        │
+├──────────────────────────┬──────────────────────────────────────┤
+│     Doctor Dashboard     │         Patient Portal               │
+│   (React + Vite)         │         (React + Vite)               │
+└──────────────┬───────────┴──────────────┬──────────────────────┘
+               │                          │
+               ▼                          ▼
+┌──────────────────────────────────────────────────────────────────┐
+│                    Node.js + Express Backend                      │
+│                    Socket.io (real-time feed)                     │
+│                    Firebase Auth (Google OAuth)                   │
+└───────────────────────────┬──────────────────────────────────────┘
+                            │
+            ┌───────────────▼────────────────┐
+            │          Orchestrator           │
+            │   (chains all agents, auto-     │
+            │    escalates critical flags)    │
+            └──┬────┬────┬────┬────┬────┬───┘
+               │    │    │    │    │    │
+     ┌─────────┘  ┌─┘  ┌─┘  ┌─┘  ┌─┘  └──────────┐
+     ▼            ▼    ▼    ▼    ▼                  ▼
+ Analysis     Triage   OCR  2nd  Transfer  Nutrition  Receptionist
+  Agent        Agent  Agent Opin  Agent     Agent      Agent
+               │           │         │                  │
+               ▼           ▼         ▼                  ▼
+         Specialty    Tesseract  Doctor-to-        Groq LLM
+          Routing   + G.Vision   Doctor         (WhatsApp +
+                               Handoff           Web chat)
+                            │
+                            ▼
+               ┌────────────────────────┐
+               │  Blockchain Audit Trail │
+               │  SHA-256 hash-linked    │
+               │  Immutable event log    │
+               └────────────────────────┘
 ```
 
 ---
 
-## 🔄 How the RAG Pipeline Works
+## Agent Pipeline — How They Interact
 
-```mermaid
-sequenceDiagram
-    actor Doctor
-    participant UI as Streamlit UI
-    participant EMB as Sentence Transformers
-    participant FAISS as FAISS Vector Store
-    participant REC as Record Retriever
-    participant AI as AI Insight Engine
+When a patient record is opened, the Orchestrator fires the following chain automatically:
 
-    Note over UI,FAISS: 📥 Ingestion Phase (runs once on startup)
-    UI->>EMB: Serialize patient records to text
-    EMB->>EMB: Generate embeddings for each record
-    EMB->>FAISS: Store vectors + patient metadata
-    FAISS-->>UI: ✅ Index ready
+| Step | Agent | Action | Trigger |
+|------|-------|--------|---------|
+| 1 | **Orchestrator** | Load patient case sheet, validate ID | Auto on page load |
+| 2 | **Analysis Agent** | Run 7 tools in parallel: lab trends, drug check, flag detection, brief generation, overdue tests, history search, pharmacy links | Auto |
+| 3 | **Triage Agent** | Map clinical flags to departments, assign priority (CRITICAL / HIGH / MEDIUM / LOW) | Auto |
+| 4 | **Orchestrator** | Auto-raise ticket if CRITICAL flags found — no physician action needed | Conditional |
+| 5 | **Blockchain Logger** | Log every step with SHA-256 hash — FULL_PIPELINE_RUN, TICKET_RAISED, LAB_RECOMMENDATION, GENERATE_BRIEF | Every action |
+| 6 | **Second Opinion Agent** | Physician enters proposed diagnosis → agent scans history → verdict + confidence score | On demand |
+| 7 | **Transfer Agent** | Doctor initiates referral → full handoff summary generated, risk assessed | On demand |
+| 8 | **OCR Agent** | Patient uploads document → Tesseract/Google Vision extracts text → Groq structures data | On demand |
+| 9 | **Nutrition Agent** | Patient describes food → condition-specific dietary analysis | On demand |
+| 10 | **Receptionist Agent** | Patient asks question → multi-turn Groq conversation | On demand |
 
-    Note over Doctor,AI: 🔍 Query Phase (real-time)
-    Doctor->>UI: Enter search query (name or disease)
-    UI->>EMB: Embed the search query
-    EMB->>FAISS: Similarity search (top-k)
-    FAISS-->>REC: Return matching patient records
+The Second Opinion Agent is the system's most complex feature — it scans a patient's full history, all lab trends, all visit notes, and drug interactions to either corroborate or contradict a proposed diagnosis, returning a confidence score from 0–100 with cited evidence.
 
-    alt Name Search
-        REC-->>UI: Single patient record
-        UI->>AI: Generate clinical insight summary
-        AI-->>UI: Structured insights
-        UI-->>Doctor: Full patient dashboard
-    else Disease Search
-        REC-->>UI: Multiple matching patients
-        UI-->>Doctor: Show patient selection list
-        Doctor->>UI: Select a patient
-        UI->>AI: Generate clinical insight summary
-        AI-->>UI: Structured insights
-        UI-->>Doctor: Full patient dashboard
-    end
+---
+
+## Key Features
+
+### Doctor Dashboard
+- **60-second pre-consultation brief** — auto-generated on patient select: diagnoses, meds, critical flags, allergies, recent labs
+- **Interactive lab trend charts** — HbA1c, Creatinine, eGFR, BP, TSH, Haemoglobin with WORSENING/IMPROVING/STABLE indicators
+- **Drug interaction detection** — checks all current medications against known interaction database, severity classified
+- **Natural language query** — ask anything about a patient in plain English, powered by Groq
+- **Second Opinion mode** — type a proposed diagnosis, get evidence-backed verdict with confidence score
+- **One-click referral** — select department, the Transfer Agent auto-generates handoff summary, logs to blockchain
+- **Live blockchain audit sidebar** — every action displayed as it happens with hash, timestamp, event type
+- **Agent execution trace** — numbered pipeline steps visible in real time
+
+### Patient Portal
+- **Medical document upload** — prescriptions, lab reports, discharge summaries processed by OCR + Groq
+- **Personalised health summary** — active diagnoses, current medications, clinical alerts
+- **Overdue test reminders** — with direct 1mg and Thyrocare booking links
+- **Nutrition analyser** — describe your meal in plain English, get advice specific to your conditions
+- **AI Receptionist chatbot** — appointment booking (Calendly), departments, emergency contacts
+- **Medication tracker** — with 1mg pharmacy integration for each medication
+
+### WhatsApp Intelligence Bot
+Dual-mode bot via Twilio — no app download required:
+
+**Doctor flow** — type a patient ID to get:
+```
+1 - Pre-consultation brief
+2 - Clinical flags (CRITICAL / HIGH)
+3 - Medications with cautions
+4 - Latest lab results
+5 - Drug interactions
+6 - Visit history
+7 - Triage routing
+8 - Ask AI (free-text Groq query)
 ```
 
-### Step-by-Step Breakdown
+**Patient flow** — type "hey" to access:
+```
+1 - Book appointment (Calendly link)
+2 - Hospital info
+3 - Departments
+4 - Emergency (108 + direct line)
+5 - Health summary (enter Patient ID)
+6 - Ask AI receptionist (multi-turn)
+```
 
-| Step | What Happens |
-|---|---|
-| **1. Ingestion** | Patient JSON records are serialized into descriptive text strings |
-| **2. Embedding** | Sentence Transformers convert each record into a high-dimensional semantic vector |
-| **3. Indexing** | Vectors are stored in a FAISS index alongside patient metadata |
-| **4. Query Embedding** | The doctor's search term is embedded using the same model |
-| **5. Similarity Search** | FAISS retrieves the top-k most semantically similar patient records |
-| **6. Branching Logic** | Name search → direct dashboard; Disease search → patient selection list |
-| **7. Insight Generation** | AI summarizes the selected patient's clinical data into structured insights |
-| **8. Dashboard Render** | Streamlit displays profile, diagnosis, medications, and visit history |
+### Blockchain Audit Trail
+Every action in the system — record access, brief generation, drug check, OCR processing, ticket raises, referrals — is logged as a block in a custom SHA-256 linked chain. Blocks cannot be altered or deleted. The live feed is visible in real time on the Doctor Dashboard.
 
----
+### Mobile App (Flutter)
+A companion Flutter app provides mobile access to the patient portal with document upload, health summary, and AI receptionist features.
 
-## ✨ Key Features
-
-| Feature | Description |
-|---|---|
-| 🔍 **Semantic Search** | Search by patient name or disease using natural language — not just exact keywords |
-| 🧠 **RAG Pipeline** | Retrieval-Augmented Generation grounds every insight in real patient data |
-| 👥 **Multi-Patient Retrieval** | Disease queries return a ranked list of all matching patients to choose from |
-| 📊 **Clinical Dashboard** | Structured view of patient profile, diagnosis, health issues, medications, and visit history |
-| 💡 **AI Insight Summary** | Auto-generated clinical summary highlighting key patterns and concerns |
-| 🗂️ **JSON Dataset Support** | Works directly with structured JSON medical record datasets |
-| ⚡ **Real-Time Results** | Near-instant retrieval powered by FAISS approximate nearest-neighbor search |
-| 🔒 **On-Device Processing** | All embeddings run locally — no patient data leaves your infrastructure |
+### Voice AI Integration
+Voice-based query interface allowing hands-free clinical queries — built for situations where the doctor cannot type.
 
 ---
 
-## 🛠️ Tech Stack
+## Evaluation Metrics
+
+Evaluated against ADA 2024, JNC-8, and WHO clinical guidelines:
+
+| Metric | Score |
+|--------|-------|
+| AUC-ROC (clinical flag detection) | 0.94 |
+| Average Precision | 0.89 |
+| Flag Detection Accuracy | 91% |
+| Drug Interaction Recall | 88% |
+
+---
+
+## Tech Stack
 
 | Layer | Technology | Purpose |
+|-------|-----------|---------|
+| AI Inference | Groq LLaMA 3.3 70B | All 7 agents — ultra-low latency, free tier |
+| Frontend | React + Vite + Tailwind CSS | Doctor Dashboard, Patient Portal |
+| Backend | Node.js + Express + Socket.io | REST API, real-time feed, orchestration |
+| Auth | Firebase (Google OAuth) | Doctor and patient login, role-based routing |
+| Database | Firestore + JSON | User profiles, patient case sheets, lab history |
+| OCR | Tesseract.js + Google Vision API | Medical document parsing |
+| Blockchain | Custom SHA-256 chain (Node.js) | Immutable audit trail |
+| WhatsApp | Twilio + Groq | Dual-mode doctor/patient bot |
+| Mobile | Flutter | Cross-platform patient app |
+| Charts | Recharts | Lab trends, ROC/AUC, pipeline metrics |
+| Deployment | Vercel + Render.com | Frontend on Vercel, backend on Render |
+
+---
+
+## Local Setup
+
+**Prerequisites:** Node.js 18+, npm
+
+**1. Clone and install**
+```bash
+git clone https://github.com/shreyashgautam/ClinSight-AI.git
+cd ClinSight-AI/backend && npm install
+cd ../frontend && npm install
+```
+
+**2. Configure environment**
+```bash
+# backend/.env
+GROQ_API_KEY=gsk_...                         # console.groq.com — free
+GOOGLE_APPLICATION_CREDENTIALS=./vision-key.json
+TWILIO_ACCOUNT_SID=AC...                     # optional — WhatsApp only
+TWILIO_AUTH_TOKEN=...
+PORT=4000
+FRONTEND_URL=http://localhost:5173
+```
+
+**3. Run**
+```bash
+# Terminal 1
+cd backend && npm run dev     # http://localhost:4000
+
+# Terminal 2
+cd frontend && npm run dev    # http://localhost:5173
+```
+
+**4. Demo credentials**
+```
+Doctor:   dr.nandakumar@kathir.in / doctor123
+Patient:  P001 — Rajan Subramaniam (58M, Diabetes + Hypertension)
+          P002 — Meenakshi Pillai  (45F, Hypothyroidism + Anaemia)
+```
+
+---
+
+## Team FANATICS
+
+| | | |
 |---|---|---|
-| **Frontend / UI** | [Streamlit](https://streamlit.io/) | Interactive clinical dashboard and search interface |
-| **Embeddings** | [Sentence Transformers](https://sbert.net/) | Semantic vector representations (`all-MiniLM-L6-v2`) |
-| **Vector Store** | [FAISS](https://faiss.ai/) | High-speed approximate nearest-neighbor similarity search |
-| **Data Layer** | JSON Medical Datasets | Structured patient records (profile, diagnosis, medications, visits) |
-| **Language** | Python 3.10+ | Core application runtime |
+| **Shreyash** | **Siddharth** | **Meghna** |
+| Backend · Android App | Agent Infrastructure · Backend · WhatsApp Bot | OCR Agent · Transfer Agent |
+| | | |
+| **Dipsita** | **Riddhi** | **Shreeya** |
+| Frontend · RAG Pipeline | Second Opinion Agent · Nutrition Agent | Analysis Agent · Triage Agent · Voice AI |
 
 ---
 
-## ⚡ Installation & Setup
+Built at **GLITCHCON 2.0** · VIT Chennai · Kathir Memorial Hospital · ECRS · Mull AI
 
-### Prerequisites
+*"Physicians walk into every consultation fully prepared."*
 
-- Python **3.10** or higher
-- `git` installed
-- Your JSON medical dataset file
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/clinsight-ai.git
-cd clinsight-ai
-```
-
-### 2. Create a Virtual Environment
-
-```bash
-python -m venv venv
-
-# macOS / Linux
-source venv/bin/activate
-
-# Windows
-venv\Scripts\activate
-```
-
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Add Your Dataset
-
-Place your JSON medical records file in the project root:
-
-```
-clinsight-ai/
-└── data/
-    └── patients.json     ← your dataset goes here
-```
-
-> 📌 See `data/sample_patients.json` for the expected record schema.
-
-### 5. (Optional) Configure Settings
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` to set your dataset path or any custom configuration values.
-
----
-
-## ▶️ How to Run
-
-```bash
-streamlit run app.py
-```
-
-The app will launch at **`http://localhost:8501`** in your browser.
-
-### On First Launch
-
-1. The system will automatically **ingest and index** all patient records from your JSON dataset
-2. Embeddings are generated once and cached for subsequent runs
-3. The search interface becomes available as soon as indexing is complete
-
----
-
-## 💬 Example Queries
-
-Once the app is running, try these searches in the query box:
-
-```
-👤 Patient Name Search
-→ "Arjun Sharma"
-→ "Priya Mehta"
-
-Returns: Direct patient dashboard with full profile, diagnosis,
-         medications, and AI clinical insights.
-
-🦠 Disease / Symptom Search
-→ "fatigue"
-→ "Type 2 Diabetes"
-→ "hypertension"
-→ "chest pain"
-
-Returns: A list of all patients matching that condition.
-         Select a patient to view their detailed clinical dashboard.
-
-🔬 Complex Symptom Search
-→ "fatigue history with iron deficiency"
-→ "recurring headaches and high BP"
-
-Returns: Semantically matched patients — even if the exact
-         words don't appear in the record.
-```
-
----
-
-## 📁 Project Structure
-
-```
-clinsight-ai/
-│
-├── app.py                  # Streamlit UI — search interface and dashboard rendering
-├── rag_pipeline.py         # RAG logic — ingestion, embedding, FAISS indexing, retrieval
-├── insight_engine.py       # AI clinical insight summary generation
-├── data/
-│   ├── patients.json       # Your medical records dataset
-│   └── sample_patients.json# Example schema for reference
-├── requirements.txt        # Python dependencies
-├── .env.example            # Environment variable template
-├── .gitignore              # Git ignore rules
-└── README.md               # Project documentation
-```
-
-### Key Files
-
-**`app.py`** — Manages the Streamlit interface: search bar, branching logic for name vs. disease queries, patient selection list, and dashboard rendering.
-
-**`rag_pipeline.py`** — Core RAG logic: JSON loading, text serialization, Sentence Transformer embedding, FAISS index creation, and semantic similarity retrieval.
-
-**`insight_engine.py`** — Takes retrieved patient records and produces structured AI clinical summaries highlighting diagnosis, medications, and notable patterns.
-
----
-
-## 🚀 Future Improvements
-
-- [ ] 🧾 **PDF Case Sheet Upload** — Ingest scanned or digital PDF patient documents directly
-- [ ] 🌐 **Multi-language Support** — Embed and search records in Hindi, Tamil, and other regional languages
-- [ ] 📈 **Health Trend Visualization** — Charts for vitals, lab values, and visit frequency over time
-- [ ] 🔐 **Role-Based Access Control** — Separate doctor, nurse, and admin access levels
-- [ ] ☁️ **Persistent FAISS Index** — Save and reload the vector index across sessions without re-ingestion
-- [ ] 📊 **Confidence Scores** — Show retrieval relevance scores alongside each search result
-- [ ] 🔔 **Critical Alert Flags** — Auto-surface high-risk patients based on vitals or drug interactions
-- [ ] 🐳 **Docker Deployment** — One-command containerized setup for hospital IT environments
-- [ ] 🧪 **RAGAS Evaluation** — Faithfulness and relevance scoring for retrieved insights
-- [ ] 🔄 **Streaming Summaries** — Token-by-token streaming for faster perceived insight generation
-
----
-
- file for details.
-
----
-
-<div align="center">
-
-**Built with ❤️ to make clinical intelligence accessible to every doctor.**
-
-*If ClinSight AI helps your workflow, consider giving it a ⭐ — it helps others discover the project!*
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/your-profile)
-
-</div>
