@@ -13,6 +13,7 @@
 [![License](https://img.shields.io/badge/License-MIT-purple?style=flat-square)](LICENSE)
 
 **Track Winners — Healthcare AI | HackerRank GLITCHCON 2.0**
+
 **Sponsored by:
 HackerRank · WeLe · ECDS · Kathir Memorial Hospital · Bitumen · Arpina Solutions · Mellon AI**
 
@@ -69,9 +70,9 @@ Patients get their own portal: upload a prescription or lab report, get a struct
 
 ## Achievements
 
-- **Track Winners — Healthcare AI** at GLITCHCON 2.0, VIT Chennai (24-hour hackathon)
-- **Team offered internship** by Kathir Memorial Hospital, Chennai
-- Industry partners: Kathir Memorial Hospital · ECRS · Mull AI
+- **Track Winners — Healthcare AI** at GLITCHCON 2.0, VIT (24-hour hackathon)
+- **Team offered internship** by one of the sponsors
+- Industry partners: HackerRank · WeLe · ECDS · Kathir Memorial Hospital · Bitumen · Arpina Solutions · Mellon AI
 
 ---
 
@@ -79,26 +80,26 @@ Patients get their own portal: upload a prescription or lab report, get a struct
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        ClinSight Platform                        │
+│                        ClinSight Platform                       │
 ├──────────────────────────┬──────────────────────────────────────┤
 │     Doctor Dashboard     │         Patient Portal               │
 │   (React + Vite)         │         (React + Vite)               │
-└──────────────┬───────────┴──────────────┬──────────────────────┘
+└──────────────┬───────────┴──────────────┬───────────────────────┘
                │                          │
                ▼                          ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│                    Node.js + Express Backend                      │
-│                    Socket.io (real-time feed)                     │
-│                    Firebase Auth (Google OAuth)                   │
+│                    Node.js + Express Backend                     │
+│                    Socket.io (real-time feed)                    │
+│                    Firebase Auth (Google OAuth)                  │
 └───────────────────────────┬──────────────────────────────────────┘
                             │
             ┌───────────────▼────────────────┐
-            │          Orchestrator           │
-            │   (chains all agents, auto-     │
-            │    escalates critical flags)    │
+            │          Orchestrator          │
+            │   (chains all agents, auto-    │
+            │    escalates critical flags)   │
             └──┬────┬────┬────┬────┬────┬───┘
                │    │    │    │    │    │
-     ┌─────────┘  ┌─┘  ┌─┘  ┌─┘  ┌─┘  └──────────┐
+     ┌─────────┘  ┌─┘  ┌─┘  ┌─┘  ┌─┘    └───────────┐
      ▼            ▼    ▼    ▼    ▼                  ▼
  Analysis     Triage   OCR  2nd  Transfer  Nutrition  Receptionist
   Agent        Agent  Agent Opin  Agent     Agent      Agent
@@ -110,9 +111,9 @@ Patients get their own portal: upload a prescription or lab report, get a struct
                             │
                             ▼
                ┌────────────────────────┐
-               │  Blockchain Audit Trail │
-               │  SHA-256 hash-linked    │
-               │  Immutable event log    │
+               │  Blockchain Audit Trail│
+               │  SHA-256 hash-linked   │
+               │  Immutable event log   │
                └────────────────────────┘
 ```
 
