@@ -1,3 +1,5 @@
+# ClinSight AI – An Agentic AI Infrastructure Automating the End-to-End Experience for Doctors and Patients
+# HackerRank GLITCHCON 2.0 – Track Winners (Healthcare AI)
 <div align="center">
 
 # ClinSight AI
@@ -10,13 +12,33 @@
 [![Firebase](https://img.shields.io/badge/Auth-Firebase-yellow?style=flat-square)](https://firebase.google.com)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=flat-square)](LICENSE)
 
-**Track Winners — Healthcare AI · GLITCHCON 2.0**
+**Track Winners — Healthcare AI | HackerRank GLITCHCON 2.0**
+**Sponsored by:
+HackerRank · WeLe · ECDS · Kathir Memorial Hospital · Bitumen · Arpina Solutions · Mellon AI**
 
-*Team offered internship by Kathir Memorial Hospital*
+*Team offered internship by One of the Sponsors*
 
-[Live Demo](https://clinsightai.vercel.app) · [Report Bug](https://github.com/shreyashgautam/ClinSight-AI/issues)
+[Live Demo](https://clinsightai.vercel.app) · [Report Bug](https://github.com/sseth345/GLITCHCON_team09/issues)
 
 </div>
+
+---
+
+
+## 👥 Team FANATICS
+
+<table align="center">
+<tr>
+<td align="center"><img src="https://img.shields.io/badge/-Shreyash-FF6B6B?style=for-the-badge&logo=github&logoColor=white"></td>
+<td align="center"><img src="https://img.shields.io/badge/-Siddharth-45B7D1?style=for-the-badge&logo=github&logoColor=white"></td>
+<td align="center"><img src="https://img.shields.io/badge/-Meghna-FECA57?style=for-the-badge&logo=github&logoColor=white"></td>
+</tr>
+<tr>
+<td align="center"><img src="https://img.shields.io/badge/-Dipsita-4ECDC4?style=for-the-badge&logo=github&logoColor=white"></td>
+<td align="center"><img src="https://img.shields.io/badge/-Riddhi-96CEB4?style=for-the-badge&logo=github&logoColor=white"></td>
+<td align="center"><img src="https://img.shields.io/badge/-Shreeya-FF9FF3?style=for-the-badge&logo=github&logoColor=white"></td>
+</tr>
+</table>
 
 ---
 
